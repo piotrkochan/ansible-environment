@@ -81,8 +81,21 @@ parse_commandline "$@"
 set -x
 set -e
 
-sudo apt install software-properties-common --yes
-sudo apt-add-repository --yes --update ppa:ansible/ansible
+. /etc/os-release
+
+if [ "$ID" == "ubuntu" ]; then
+  if [ "$UBUNTU_CODENAME" != "focal" ]; then
+    sudo apt install software-properties-common --yes
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+  fi
+fi
+
+if [ "$ID" == "debian" ]; then
+  sudo sh -c 'echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list'
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+  sudo apt update
+fi
+
 sudo apt install ansible --yes
 
 ENV_DIR="$HOME/.autoenv"
