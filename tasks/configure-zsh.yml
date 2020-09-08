@@ -12,7 +12,7 @@
     name: gantsign.oh-my-zsh
   vars:
     users:
-      - username: "{{ env_user|defaut(whoami_result.stdout) }}"
+      - username: "{{ env_user|default(whoami_result.stdout) }}"
 
 - name: Install Oh My Zsh zsh-nvm plugin
   git:
