@@ -1,6 +1,6 @@
 ---
 - name: Make .ssh directory
-  file: path="~/.ssh" state=present
+  file: path="~/.ssh" state=directory
 
 - name: generate SSH key "{{ssh_key_filename}}"
   openssh_keypair:
