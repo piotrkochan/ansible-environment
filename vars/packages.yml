@@ -4,6 +4,7 @@ packages:
   - wget
   - curl
   - redis-tools
+  - vim
   - htop
   - mc
   - ncdu
