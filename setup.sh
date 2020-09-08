@@ -99,7 +99,9 @@ installAnsible() {
 
 checkAnsible() {
   REQUIRED_PKG="ansible"
+  set +e
   PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+  set -e
   echo Checking for $REQUIRED_PKG: $PKG_OK
   if [ "" == "$PKG_OK" ]; then
     installAnsible
