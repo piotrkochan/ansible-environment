@@ -79,6 +79,7 @@ parse_commandline "$@"
 # [ <-- needed because of Argbash
 
 set -x
+set -e
 
 sudo apt install software-properties-common --yes
 sudo apt-add-repository --yes --update ppa:ansible/ansible
@@ -89,4 +90,5 @@ ansible-galaxy install -r  "$HOME/.env/requirements.yml"
 ansible-playbook "$HOME/.env/playbook.yml" --extra-vars "env_user=$(whoami)"
 
 set +x
+set +e
 # ] <-- needed because of Argbash
