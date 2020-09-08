@@ -83,7 +83,6 @@ set -e
 
 sudo apt install software-properties-common --yes
 sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt update
 sudo apt install ansible --yes
 
 git clone https://github.com/piotrkochan/ansible-environment.git "$HOME/.env"
