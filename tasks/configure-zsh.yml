@@ -5,13 +5,14 @@
 - name: Whoami
   command: whoami
   register: whoami_result
+  when: env_user is not defined
 
 - name: Install Oh My Zsh
   import_role:
     name: gantsign.oh-my-zsh
   vars:
     users:
-      - username: "{{ whoami_result.stdout }}"
+      - username: "{{ env_user|defaut(whoami_result.stdout) }}"
 
 - name: Install Oh My Zsh zsh-nvm plugin
   git:

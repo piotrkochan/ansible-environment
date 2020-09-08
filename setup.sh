@@ -34,7 +34,7 @@ begins_with_short_option()
 
 print_help()
 {
-	printf '%s\n' "Install basic packages and configure work environment"
+	printf '%s\n' "The general script's help msg"
 	printf 'Usage: %s [-v|--version] [-h|--help]\n' "$0"
 	printf '\t%s\n' "-v, --version: Prints version"
 	printf '\t%s\n' "-h, --help: Prints help"
@@ -79,9 +79,14 @@ parse_commandline "$@"
 # [ <-- needed because of Argbash
 
 set -x
-sudo apt install git ansible --yes
-git clone https://github.com/piotrkochan/ansible-environment.git "${HOME}/.env"
-ansible-galaxy install -r  "${HOME}/.env/requirements.yml"
-ansible-playbook "${HOME}/.env/playbook.yml"
+
+sudo apt install software-properties-common --yes
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible --yes
+
+git clone https://github.com/piotrkochan/ansible-environment.git "$HOME/.env"
+ansible-galaxy install -r  "$HOME/.env/requirements.yml"
+ansible-playbook "$HOME/.env/playbook.yml" --extra-vars "env_user=$(whoami)"
+
 set +x
 # ] <-- needed because of Argbash
