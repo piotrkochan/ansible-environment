@@ -1,0 +1,20 @@
+---
+- git_config:
+    name: user.name
+    scope: global
+    value: Piotr Kochan
+
+- git_config:
+    name: alias.ch
+    scope: global
+    value: checkout
+
+- git_config:
+    name: alias.s
+    scope: global
+    value: status
+
+- git_config:
+    name: alias.cp
+    scope: global
+    value: cherry-pick

@@ -1,0 +1,24 @@
+---
+#- name: Install Zsh
+#  apt: name=zsh state=present
+
+- name: Whoami
+  command: whoami
+  register: whoami_result
+
+- name: Install Oh My Zsh
+  import_role:
+    name: gantsign.oh-my-zsh
+  vars:
+    users:
+      - username: "{{ whoami_result.stdout }}"
+
+- name: Install Oh My Zsh zsh-nvm plugin
+  git:
+    repo: 'https://github.com/lukechilds/zsh-nvm'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-nvm
+
+- name: Install Oh My Zsh zsh-nvm plugin
+  git:
+    repo: 'https://github.com/lukechilds/zsh-better-npm-completion'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion

@@ -1,0 +1,9 @@
+---
+packages:
+  - git
+  - wget
+  - curl
+  - redis-tools
+  - htop
+  - mc
+  - ncdu
