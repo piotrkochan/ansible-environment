@@ -85,9 +85,12 @@ sudo apt install software-properties-common --yes
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible --yes
 
-git clone https://github.com/piotrkochan/ansible-environment.git "$HOME/.env"
-ansible-galaxy install -r  "$HOME/.env/requirements.yml"
-ansible-playbook "$HOME/.env/playbook.yml" --extra-vars "env_user=$(whoami)"
+ENV_DIR="$HOME/.autoenv"
+
+rm -rf "$ENV_DIR"
+git clone https://github.com/piotrkochan/ansible-environment.git "$ENV_DIR"
+ansible-galaxy install -r  "$ENV_DIR/requirements.yml"
+ansible-playbook "$ENV_DIR/playbook.yml" --extra-vars "env_user=$(whoami)"
 
 set +x
 set +e
