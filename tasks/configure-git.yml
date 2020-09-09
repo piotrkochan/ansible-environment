@@ -18,3 +18,8 @@
     name: alias.cp
     scope: global
     value: cherry-pick
+    
+- git_config:
+    name: alias.malina
+    scope: global
+    value: push
