@@ -82,9 +82,9 @@ set -x
 set -e
 
 installAnsible() {
-    sudo apt update
-    sudo apt install --yes git
-  . /etc/os-release
+  sudo apt update
+  sudo apt install --yes git
+  source /etc/os-release
 
   if [ "$ID" == "ubuntu" ]; then
     if [ "$UBUNTU_CODENAME" != "focal" ]; then
@@ -108,7 +108,7 @@ checkAnsible() {
   set +e
   PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
   set -e
-  echo Checking for $REQUIRED_PKG: $PKG_OK
+  echo "Checking for $REQUIRED_PKG: $PKG_OK"
   if [ "" == "$PKG_OK" ]; then
     installAnsible
   fi
