@@ -1,3 +1,3 @@
 # ansible-environment
 
-Simple ansible playbook to kistart at any new environment
+Simple ansible playbook to kickstart at any new environment
