@@ -11,3 +11,5 @@
 
   roles:
     - role: "piotrkochan.ansible-environment"
+      vars:
+        users: []
