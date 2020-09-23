@@ -6,14 +6,4 @@
     - vars/packages.yml
     - vars/ohmyzsh.yml
   tasks:
-    - name: Install basic packages
-      include_tasks: tasks/configure-packages.yml
 
-    - name: Install ssh
-      include_tasks: tasks/configure-ssh.yml
-
-    - name: Install and configure ZSH
-      include_tasks: tasks/configure-zsh.yml
-
-    - name: Configure git
-      include_tasks: tasks/configure-git.yml

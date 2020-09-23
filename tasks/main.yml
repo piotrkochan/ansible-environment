@@ -1,0 +1,12 @@
+---
+- name: Install basic packages
+  include_tasks: tasks/configure-packages.yml
+
+- name: Configure SSH
+  include_tasks: tasks/configure-ssh.yml
+
+- name: Install and configure ZSH
+  include_tasks: tasks/configure-zsh.yml
+
+- name: Configure git
+  include_tasks: tasks/configure-git.yml

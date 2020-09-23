@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include my-env"
+      include_role:
+        name: "my-env"

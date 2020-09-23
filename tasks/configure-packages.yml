@@ -4,5 +4,6 @@
   become: yes
   apt: name={{ packages }} state=present
 
-- name: Install thefuck
-  pip: name=thefuck executable=pip3
+- name: Install pip packages
+  pip: name={{ item }} extra_args="--user" executable=pip3
+  loop: pip_packages
