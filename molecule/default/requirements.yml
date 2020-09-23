@@ -1,0 +1,4 @@
+---
+roles:
+  - name: gantsign.oh-my-zsh
+    version: 2.2.2
