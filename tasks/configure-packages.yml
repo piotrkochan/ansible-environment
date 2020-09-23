@@ -5,5 +5,4 @@
   apt: name={{ packages }} state=present
 
 - name: Install pip packages
-  pip: name={{ item }} extra_args="--user" executable=pip3
-  loop: pip_packages
+  pip: name={{ pip_packages | join (' ') }} extra_args="--user" executable=pip3
