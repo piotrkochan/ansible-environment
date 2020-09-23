@@ -1,9 +1,0 @@
-- hosts: localhost
-  gather_facts: yes
-  connection: local
-  vars_files:
-    - vars/misc.yml
-    - vars/packages.yml
-    - vars/ohmyzsh.yml
-  tasks:
-
