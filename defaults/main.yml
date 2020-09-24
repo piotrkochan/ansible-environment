@@ -16,6 +16,10 @@ oh_my_zsh_plugins:
   - sudo
   - ufw
 
+oh_my_zsh_plugins_clone:
+  - { name: zsh-better-npm-completion, repo: https://github.com/lukechilds/zsh-better-npm-completion }
+  - { name: zsh-nvm, repo: https://github.com/lukechilds/zsh-nvm }
+
 packages:
   - git
   - wget
