@@ -4,5 +4,8 @@
   become: yes
   apt: name={{ packages }} state=present
 
+- name: Install pip wheel
+  pip: name=wheel extra_args="--user" executable=pip3
+
 - name: Install pip packages
   pip: name={{ pip_packages }} extra_args="--user" executable=pip3
