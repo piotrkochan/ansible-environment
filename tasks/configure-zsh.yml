@@ -5,6 +5,7 @@
 - name: Whoami
   command: whoami
   register: whoami_result
+  changed_when: false
   when: env_user is not defined
 
 - name: Install Oh My Zsh
@@ -14,12 +15,6 @@
     users:
       - username: "{{ env_user|default(whoami_result.stdout) }}"
 
-- name: Install Oh My Zsh zsh-nvm plugin
-  git:
-    repo: 'https://github.com/lukechilds/zsh-nvm'
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-nvm
-
-- name: Install Oh My Zsh zsh-nvm plugin
-  git:
-    repo: 'https://github.com/lukechilds/zsh-better-npm-completion'
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion
+- name: Clone Oh My Zsh plugins
+  git: repo={{ item.repo }} dest=/home/{{ env_user|default(whoami_result.stdout) }}/.oh-my-zsh/custom/plugins/{{ item.name }}
+  loop: "{{ oh_my_zsh_plugins_clone }}"

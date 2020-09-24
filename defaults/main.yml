@@ -1,0 +1,40 @@
+---
+ssh_keys:
+  - id_rsa
+
+oh_my_zsh_theme: bira
+
+oh_my_zsh_plugins:
+  - git
+  - zsh-nvm
+  - zsh-better-npm-completion
+  - aws
+  - ansible
+  - redis-cli
+  - sudo
+  - ufw
+
+oh_my_zsh_plugins_clone:
+  - { name: zsh-better-npm-completion, repo: "https://github.com/lukechilds/zsh-better-npm-completion" }
+  - { name: zsh-nvm, repo: "https://github.com/lukechilds/zsh-nvm" }
+
+packages:
+  - git
+  - wget
+  - curl
+  - redis-tools
+  - vim
+  - htop
+  - mc
+  - ncdu
+  - gcc
+  - shellcheck
+  - python3-dev
+  - python3-pip
+  - python3-virtualenv
+  - python3-setuptools
+
+pip_packages:
+  - ansible>2.9.12
+  - thefuck
+  - vault-cli
