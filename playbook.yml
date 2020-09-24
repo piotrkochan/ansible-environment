@@ -1,0 +1,5 @@
+- hosts: localhost
+  gather_facts: yes
+  connection: local
+  roles:
+    - piotrkochan.ansible-environment

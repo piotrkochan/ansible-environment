@@ -103,23 +103,26 @@ installAnsible() {
   sudo apt install ansible --yes
 }
 
-checkAnsible() {
-  REQUIRED_PKG="ansible"
+checkPkg() {
   set +e
-  PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+  PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1|grep "install ok installed")
   set -e
-  echo "Checking for $REQUIRED_PKG: $PKG_OK"
+  echo "Checking for $1: $PKG_OK"
   if [ "" == "$PKG_OK" ]; then
-    installAnsible
+    return 1
+  else
+    return 0
   fi
 }
 
-checkAnsible
+checkPkg ansible || installAnsible
 ENV_DIR="$HOME/.autoenv"
 
 rm -rf "$ENV_DIR"
-git clone https://github.com/piotrkochan/ansible-environment.git "$ENV_DIR"
-ansible-galaxy install -r  "$ENV_DIR/requirements.yml"
+mkdir "$ENV_DIR"
+git clone --single-branch --branch as-role https://github.com/piotrkochan/ansible-environment.git "$ENV_DIR/roles/piotrkochan.ansible-environment"
+mv "$ENV_DIR/roles/piotrkochan.ansible-environment/playbook.yml" "$ENV_DIR"
+ansible-galaxy install -r "$ENV_DIR/roles/piotrkochan.ansible-environment/molecule/default/requirements.yml"
 ansible-playbook "$ENV_DIR/playbook.yml" --extra-vars "env_user=$(whoami)"
 
 set +x

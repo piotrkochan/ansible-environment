@@ -1,3 +1,3 @@
 # ansible-environment
 
-Simple ansible playbook to kistart at any new environment
+Simple ansible role to install basic  at any new environment
