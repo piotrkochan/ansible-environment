@@ -81,9 +81,21 @@ parse_commandline "$@"
 set -x
 set -e
 
+checkPkg() {
+  set +e
+  PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1|grep "install ok installed")
+  set -e
+  echo "Checking for $1: $PKG_OK"
+  if [ "" == "$PKG_OK" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 installAnsible() {
   sudo apt update
-  sudo apt install --yes git
+  checkPkg git || sudo apt install --yes git
   source /etc/os-release
 
   if [ "$ID" == "ubuntu" ]; then
@@ -101,18 +113,6 @@ installAnsible() {
   fi
 
   sudo apt install ansible --yes
-}
-
-checkPkg() {
-  set +e
-  PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $1|grep "install ok installed")
-  set -e
-  echo "Checking for $1: $PKG_OK"
-  if [ "" == "$PKG_OK" ]; then
-    return 1
-  else
-    return 0
-  fi
 }
 
 checkPkg ansible || installAnsible

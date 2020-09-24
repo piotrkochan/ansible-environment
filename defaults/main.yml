@@ -35,6 +35,5 @@ packages:
   - python3-setuptools
 
 pip_packages:
-  - ansible>2.9.12
   - thefuck
   - vault-cli

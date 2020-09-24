@@ -30,6 +30,4 @@ galaxy_info:
     - environment
     - workspace
 
-dependencies:
-  - role: gantsign.oh-my-zsh
-    version: 2.2.2
+dependencies: []
