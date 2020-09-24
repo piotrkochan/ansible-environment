@@ -2,10 +2,8 @@
 ssh_keys:
   - id_rsa
 
-# Default theme
 oh_my_zsh_theme: bira
 
-# Default plugins
 oh_my_zsh_plugins:
   - git
   - zsh-nvm
@@ -17,8 +15,8 @@ oh_my_zsh_plugins:
   - ufw
 
 oh_my_zsh_plugins_clone:
-  - { name: zsh-better-npm-completion, repo: https://github.com/lukechilds/zsh-better-npm-completion }
-  - { name: zsh-nvm, repo: https://github.com/lukechilds/zsh-nvm }
+  - { name: zsh-better-npm-completion, repo: "https://github.com/lukechilds/zsh-better-npm-completion" }
+  - { name: zsh-nvm, repo: "https://github.com/lukechilds/zsh-nvm" }
 
 packages:
   - git
@@ -32,8 +30,10 @@ packages:
   - shellcheck
   - python3-dev
   - python3-pip
+  - python3-virtualenv
   - python3-setuptools
 
 pip_packages:
+  - wheel
   - thefuck
   - vault-cli
