@@ -8,6 +8,7 @@ packages:
   - htop
   - mc
   - ncdu
+  - tree
   - shellcheck
   - python3-dev
   - python3-pip
